@@ -1,1 +1,0 @@
-print type(pow(10,2))
