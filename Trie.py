@@ -51,24 +51,65 @@ class Trie:
 
         return s
 
+    def print_all_word(self,crawl,s):
+
+        if crawl is None:
+            return
+        if crawl.leaf is True:
+            print s
+        for i in range(0,26):
+            if crawl.children[i] is not None:
+                self.print_all_word(crawl.children[i],s+chr(i+97))
+
+    def search_in_dictionary(self,s):
+        crawl=self.root
+
+        for i in range(0,len(s)):
+            index=self.return_index(s[i])
+            try:
+                crawl=crawl.children[index]
+            except:
+                print "No such word"
+                return
+
+        try:
+
+            if crawl.leaf is True:
+                print s
+
+            for i in range(0,26):
+
+                    if crawl.children[i] is not None:
+                        self.print_all_word(crawl.children[i],s+chr(i+97))
+
+        except:
+
+            print "No such word"
+            return
+
+
 
 
 
 T=Trie()
 
-keys = ["the","a","there","anaswe","any",
-            "by","their","zebra", "dog", "duck", "dove","prabhat"]
+keys = ["prabhat","Gayatri","sanika","sananya","sanang"]
+
 for i in keys:
     T.insert_in_trie(i)
-
-if T.search_in_trie('by'):
+"""
+if T.search_in_trie('yash'):
     print "Found"
 else:
     print 'Not Found'
 
-c='duck'
+c='zebra'
 
 if T.search_in_trie(c) is True:
     print T.unique_prefix(c)
 else:
     print 'Not in directory'
+"""
+
+search_index='sa'
+T.search_in_dictionary(search_index)
