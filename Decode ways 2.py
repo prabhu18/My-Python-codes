@@ -2,9 +2,10 @@ from collections import defaultdict
 
 
 class Solution(object):
+    
     def __init__(self):
         self.count = 0
-
+    # recursive approach, timeout is certain
     def get_count(self, x, d):
 
         if len(x) == 0:
@@ -20,7 +21,7 @@ class Solution(object):
                     self.get_count(x[i:], d)
             except:
                 pass
-
+    #dp approach ,time limit handled
     def numDecodings(self, s):
 
         if s is None and len(s) == 0:
